@@ -1,0 +1,79 @@
+
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load staticfiles %}
+
+{% block title %}{{ Pineapple }}{% endblock %}
+
+{% block body_block %}
+<head>
+</head>
+<nav>
+<div class="block-2 pad-1">
+<div class="col-1">
+<br><br>
+<br>
+<h2 class ="center" class="h2-line" ><strong>Menu</strong>
+<br><br>
+<br>
+</ul>
+
+</h2>
+</div>
+</div>
+</nav>
+
+<div>
+{% if category %}
+    {% for cat in category %}
+    <br><br>
+        <h2 class="center"><a href="/pineapple/category/{{ cat }}">  {{ cat }} </h2>
+        {% if page %}
+            <ul><br>
+            {% for page1 in page %}
+                {% if cat = page1.category %}
+                <li class ="center">
+                <div class="box-5 top-5 border-1">
+                <p><span class="it-bold clr-1">
+                <nav>
+
+                <div p class="img-border"><img src="{% thumbnail page1.image 120x80 %}"  alt=""></div p >
+                </a>
+                <div class="block-2 pad-1">
+                <div class="col-1">
+                <h2 class="h2-line"> {{ page1.title }}</a></span></strong></h2>
+                
+                <div class="col-1"><h3 class="h2-line"> ${{ page1.price}}
+                <br >
+                <div class="block-3">
+                <div class="h3">
+                <h3 class="h3-line-2">{{ page1.des }}</h3>
+
+                
+                {% if page1.views > 1 %}
+                    ({{ page1.views }} views)
+                    {% elif page1.views == 1 %}
+                    ({{ page1.views }} view)
+
+                {% endif %}
+                <br >
+                {% endif %}
+                </li>
+            {% endfor %}
+            </ul>        
+        {% endif %}
+
+    {% endfor %}
+            
+    {% else %}
+    <strong> The {{ category_name }} category does not exist ! </strong>
+{% endif %}
+
+</h3>
+</nav>
+      
+      
+</footer>
+</body>
+</html>
+{% endblock %}

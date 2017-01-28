@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} ABOUT Me ! {% endblock %}
+
+{% block body_block %}
+
+{% verbatim %}
+
+
+<div ng-app="app2">
+<div ng-controller ="contactControl">
+<div class="container_12">
+   		<div class="grid_7">
+<div class="container">
+		<h2>Contact Form</h2>
+		<br><br>
+<h2>
+		
+		<form class="form-horizontal" name="form" novalidate>	
+			<div class="form-group">
+				<div class="col-md-2">
+					<label>Full Name</label>
+				</div>
+				<div class="col-md-5">
+					<input type="text" name="name" class="form-control" ng-model="model.name" required>
+					<div class="alert alert-danger" ng-show="(form.name.$touched || form.$submitted) && form.name.$error.required">
+						Name is required
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-2">
+					<label>Phone Number</label>
+				</div>
+				<div class="col-md-5">
+					<input type="number" name="phone" class="form-control" ng-model="model.phone">
+					<div class="alert alert-danger" ng-show="(form.phone.$touched || form.$submitted) && form.phone.$error.required">
+						Phone is required
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-2">
+					<label>Email Address</label>
+				</div>
+				<div class="col-md-5" >
+					<input type="email" name="emailAddress" class="form-control" ng-model="model.email">
+					<div class="alert alert-danger" ng-show="(form.emailAddress.$touched || form.$submitted) && form.emailAddress.$error.required">
+						Email Address is required
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-2">
+					<label>Reason</label>
+				</div>
+				<div class="col-md-5">
+					<select name="reason" class="form-control" ng-model="model.reason" ng-required="true">
+                        <option>Complain</option>
+                        <option>Career</option>
+                        <option>Compliment</option>
+                        <option>Other</option>
+					</select>
+					<div class="alert alert-danger" ng-show="(form.reason.$touched || form.$submitted) && form.favorite.$error.required">
+						Reason is required
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-2">
+					<label>Message:</label>
+				</div>
+				<label class="message">
+					<strong><textarea name="textbody" class="form-control" ng-model="model.textbody" required>
+					</textarea></strong>
+					<div class="alert alert-danger" ng-show="(form.textbody.$touched || form.$submitted) && form.textbody.$error.required">
+						Name is required
+					</div>
+					</label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-5">
+					
+					<div class="form-group">
+				<div class="col-md-offset-2 col-md-5">
+					<input type="submit" value="Submit" class="btn btn-primary" ng-click="submit(model)" ng-disabled="form.$invalid" />
+					<button class="btn btn-default" ng-click="reset(model)"> Reset</button>
+				</div>
+			</div>
+		</form>
+
+		<pre>{{model | json}}</pre>
+	</div>
+	</div>
+	
+	
+
+	<div class="grid_5">
+	<li><img src="/static/images/big3.jpg" alt=""></li>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+{% endverbatim %}
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="{% static "js/app.js" %}"></script>
+<script src="{% static "js/menuController.js" %}"></script>
+<script src="{% static "js/registrationService.js" %}"></script>
+{% endblock %}

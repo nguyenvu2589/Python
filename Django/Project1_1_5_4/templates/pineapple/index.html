@@ -1,0 +1,120 @@
+
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block title %}{{ Pineapple }}{% endblock %}
+
+{% block body_block %}
+<head>
+  <script type="text/javascript">
+    $(function(){
+      SyntaxHighlighter.all();
+    });
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+<div class="main">
+    
+    {% if user.is_authenticated %}
+    <div class="block-2 pad-1">
+    <div class="col-1">
+    <h2 class="h2-line"><strong> Welcome to Bite of Fusion, {{user.username}}
+    {% else %}
+    <div class="block-2 pad-1">
+    <div class="col-1">
+    <h2 class="h2-line"><strong> Welcome to Bite of Fusion, Mr. Anonymous !!!
+    {% endif %}
+    </div>
+
+
+<div class="banner">
+  <div class="flexslider">
+    <ul class="slides">
+    <li><img src="/static/images/Thai1.jpg" alt=""></li>
+    </ul>
+  </div>
+</div>
+
+  <div class="content page1">
+    <div class="container_12">
+      <div class="grid_7">
+        <h2>Welcome</h2>
+        <div class="page1_block col1"> <img src="/static/images/welcome_img.png" alt="">
+          <div class="extra_wrapper">
+            With 0 year of experience in food industry. I open a resturant just because I want to ... <br>
+            <a href="about" class="btn">more</a> </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="grid_5">
+        <h2>Feature</h2>
+        <ul class="list">
+            {% if pages %}
+                <ul>
+                {% for page in ft %}
+                <li><a href="{% thumbnail page.image 400x300 %}">{{ page.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <strong>There are no categories present.</strong>
+            {% endif %}
+        </ul>
+      </div>
+      <div class="clear"></div>
+      <div class="grid_12">
+        <div class="hor_separator"></div>
+      </div>
+      <div class="grid_12">
+        <div class="car_wrap">
+          <h2>What's Good</h2>
+
+          {% if top5 %}
+            <ul class="carousel1">
+            <a href="#" class="prev"></a><a href="#" class="next"></a>
+                {% for list in top5 %}  
+                <li>
+                    <div><img src=" {% thumbnail list.image 300x200 %}" alt="">
+                    <div class="col1 upp"> <a href="#">{{ list.title }}</a></div>
+                    <span> {{list.des}} </span><br/>
+                    <div class="price"> {{ list.price }} $  </div>
+                    <br><br><br><br>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+                
+            {% else %}
+                <strong>There are no categories present.</strong>
+            {% endif %}
+
+        </div>
+
+       </div>    
+        
+        
+
+    
+      <div class="bottom_block">
+        <div class="grid_6">
+<!--
+End testing Area
+-->
+</div>
+</div>
+</div>
+</div>
+</strong>
+</h2>
+</div>  
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}	
+
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block title %}{{ category_name }}{% endblock %}
+
+{% block body_block %}
+<h2 class="center">
+{% if item %} 
+    <br><br>
+    <h2 class="center"><strong>{{ item }}</strong>
+            
+            <br><br>
+            <img src="{% thumbnail item.image 360x240 %}" alt="">
+            <br><br>
+            <div class= "price"> {{ item.price }} $   </div>
+
+            <br/><br/><br/>
+            <h2 class="center"> {{ item.des }}</h2>
+        
+
+{% else %}
+    The {{ category_name }} category does not exist !
+{% endif %}
+
+    <div>
+    <p>
+    
+
+
+</div>
+</p>
+{% endblock %}

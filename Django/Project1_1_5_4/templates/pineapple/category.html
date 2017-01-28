@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}	
+{% load thumbnail %}
+{% load staticfiles %}
+
+{% block title %}{{ category_name }}{% endblock %}
+
+{% block body_block %}
+<h2 class="center">
+{% if category %} 
+    <h2 class="center"><strong>{{ category_name }}</strong></h2>
+    <br/><br/><br/>
+    <br><div class="center">
+        {% if page %}
+        <ul>
+            {% for page1 in page %}
+           <li>
+            <a href="{% thumbnail page1.image 800x500 %}">{{ page1.title }}</a>
+            .......{{ page1.price }} $  
+            
+            <br/><br/><br/>
+        {% if page1.views > 1 %}
+            ({{ page1.views }} views)
+            {% elif page1.views == 1 %}
+            ({{ page1.views }} view)
+        {% endif %}
+            </li>
+{% endfor %}
+        </ul>
+        {% else %}
+            <strong>No pages currently in category.</strong>
+        {% endif %}
+    {% else %}
+    The {{ category_name }} category does not exist !
+    {% endif %}
+
+    </div>
+    {% if category %}
+        <h2 class"h2-line"><a href="/pineapple/add_page/{{ category.slug }}/"> Add New Item </a><br>
+    {% else%}
+        Not Found! 
+    {% endif %}
+    <div>
+    <p>
+    
+
+
+</div>
+</p>
+{% endblock %}
+
+
+
+<script src="{% static "js/jquery-1.11.1.js" %}"></script>
+<script src="{% static "js/mango-jquery.js" %}"></script>
+<script src="{% static "js/jquery.js" %}"></script>
+<script src="{% static "js/mango-ajax.js" %}"></script>

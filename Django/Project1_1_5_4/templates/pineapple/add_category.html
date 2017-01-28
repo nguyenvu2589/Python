@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}  Add new Category {% endblock %}
+
+{%block body_block %}
+<div class="page-header">
+</div>
+<form role="form" id="category_form" method="post" action="/pineapple/add_category/">
+	<!-- csrf  stands for cross-site request forgery - help to protect and secure the http POST action.-->
+
+	{% csrf_token %}
+	{% for hidden in form.hidden_fields %}
+		{{ hidden }}
+	{% endfor %}
+
+	{% for field in form.visible_fields %}
+		{{ field.errors }}
+		{{ field.help_text }}
+		{{ field }}
+		<br>
+	{% endfor %}
+	<h2>
+	<button class="btn btn-primary" type="submit" name="submit">Add Category</button>
+</form>  
+
+{% endblock %}

@@ -1,0 +1,92 @@
+
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ Pineapple }}{% endblock %}
+
+{% block body_block %}
+<div ng-app="app">
+<div class="block-2 pad-1">
+ <div class="col-1">
+ <br><br><br>
+ <h2 class="center" class="h2-line" ><strong>Order</strong>
+ </h2>
+
+ <div class="content page1">
+  <div class="container_12">
+   <div class="grid_7">
+   {% if category %}
+    {% for cat in category %}
+        <h2><strong>{{ cat }}</strong></h2>
+        {% if page %}
+            <ul>
+            {% for page1 in page %}
+                {% if cat = page1.category %}        
+          
+                <h3>
+                <div class="grid_12">
+                 <div class="car_wrap">
+
+                
+                <label><button type="text" name="category" onclick="increase(count)"/> {{ count }}  </button></label>
+                
+             <!--    need to work on onclick ... work on increase function. when click , count = count +1 
+                and update the sumary. ... -->
+
+
+                {{ page1.title }}
+                . . . . . . . . . .
+                ${{ page1.price}}
+                </span></strong>
+                
+                </h3>
+                {% endif %}
+                </li>
+            {% endfor %}
+
+            </ul>
+
+        {% endif %}
+
+    {% endfor %}
+    </div>
+    <div class="grid_5">
+
+    {% verbatim %}
+
+    <div ng-controller= "menuController">
+    <h2>Order Summary</h2>
+    <pre>What {{ model.title }} - {{ model.price }}
+    {% endverbatim %}
+    </div>
+    </div>
+    </h3>
+    </ul>
+    </div>
+</div>
+
+    {% else %}
+    <strong> The {{ category_name }} category does not exist ! </strong>
+
+{% endif %}
+
+</div>
+</div>
+</h3>
+</div>
+
+
+</nav>
+    
+      
+</footer>
+</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="{% static "js/app.js" %}"></script>
+<script src="{% static "js/menuController.js" %}"></script>
+
+{% endblock %}
+

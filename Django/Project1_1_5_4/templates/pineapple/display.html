@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ Pineapple }}{% endblock %}
+
+{% block body_block %}
+
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% if category %}
+    {% for cat in category %}
+    <br><br>
+        <h2 class="center"><a href="/pineapple/category/{{ cat }}">  {{ cat }} </h2>
+        {% if page %}
+            
+            {% for page1 in page %}
+                {% if cat = page1.category %}
+                <br>
+                <h2 class="center">
+            	<a href= "/pineapple/page/{{ page1.slugP }}" ><img src=" {% thumbnail page1.image 160x120 crop %}" alt="">
+            	
+            	<br>
+            	{% endif %}
+            {% endfor %}
+           
+        {% endif %}
+    {% endfor %}
+	
+{% endif %}
+
+
+{% endblock %}
