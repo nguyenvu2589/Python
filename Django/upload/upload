@@ -1,0 +1,5 @@
+Django 1.5.4
+Python 2.7
+
+This a simple .csv upload application. It will save file with timestamp and then display a count in the file just uploaded.
+The page lists top 5 recent previous uploaded and the date and time of upload and record count.
